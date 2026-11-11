@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harsh Vardhan — AI &amp; Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Harsh Vardhan — AI and full-stack developer building agents that remember, full-stack apps, and DSA interview tooling." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Animated background -->
+  <div class="bg-glow" aria-hidden="true"></div>
+  <canvas id="grid-canvas" aria-hidden="true"></canvas>
+
+  <!-- Nav -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">
+      <span class="nav__mark">&lt;hv/&gt;</span>
+    </a>
+    <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#stats">Stats</a>
+      <a href="#contact" class="nav__cta">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <p class="hero__hello reveal">Hi, my name is</p>
+      <h1 class="hero__title reveal">
+        Harsh Vardhan<span class="hero__dot">.</span>
+      </h1>
+      <h2 class="hero__subtitle reveal" id="typed-line">I build things for the web.</h2>
+      <p class="hero__lede reveal">
+        I'm an AI &amp; full-stack developer in India. I build agents that
+        <em>remember</em>, full-stack apps end to end, and tooling that helps
+        people crack SDE interviews.
+      </p>
+      <div class="hero__actions reveal">
+        <a class="btn btn--primary" href="#projects">View my work</a>
+        <a class="btn btn--ghost" href="https://github.com/harshvardhan178251" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <a class="hero__scroll" href="#about" aria-label="Scroll to about"><span></span></a>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <h3 class="section__title reveal"><span>01.</span> About me</h3>
+      <div class="about reveal">
+        <div class="about__text">
+          <p>
+            I like building software that solves real problems — from an
+            <strong>AI agent that retains memory across incidents</strong> to a
+            <strong>browser-based DSA prep site</strong> with 322 solved problems.
+          </p>
+          <p>
+            My focus is the intersection of <strong>agentic AI systems</strong> and
+            <strong>full-stack product engineering</strong>: LLM tooling, RAG,
+            memory, and the front-to-back plumbing that makes it usable.
+          </p>
+          <ul class="about__facts">
+            <li>🔬 Currently building agentic AI systems &amp; LLM tooling</li>
+            <li>📚 322 DSA problems solved across 24 topics in Java</li>
+            <li>🛠️ Comfortable across Java · Python · JavaScript · C++</li>
+            <li>🤝 Open to SDE internships, new-grad roles &amp; open source</li>
+          </ul>
+        </div>
+        <div class="about__card">
+          <div class="about__card-head">
+            <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+            <span class="about__card-title">quick_facts.json</span>
+          </div>
+          <pre class="about__code"><code>{
+  <span class="k">"name"</span>: <span class="s">"Harsh Vardhan"</span>,
+  <span class="k">"location"</span>: <span class="s">"India"</span>,
+  <span class="k">"focus"</span>: [<span class="s">"AI agents"</span>, <span class="s">"full-stack"</span>],
+  <span class="k">"languages"</span>: [<span class="s">"Java"</span>, <span class="s">"Python"</span>, <span class="s">"JS"</span>],
+  <span class="k">"open_to_work"</span>: <span class="n">true</span>
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <h3 class="section__title reveal"><span>02.</span> Skills</h3>
+      <div class="skills">
+        <div class="skill-group reveal">
+          <h4>Languages</h4>
+          <div class="chips">
+            <span class="chip">Java</span><span class="chip">Python</span>
+            <span class="chip">JavaScript</span><span class="chip">SQL</span>
+            <span class="chip">C++</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>Frontend</h4>
+          <div class="chips">
+            <span class="chip">React</span><span class="chip">Vite</span>
+            <span class="chip">HTML5</span><span class="chip">CSS3</span>
+            <span class="chip">Responsive UI</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>Backend &amp; Data</h4>
+          <div class="chips">
+            <span class="chip">FastAPI</span><span class="chip">Spring Boot</span>
+            <span class="chip">Node.js</span><span class="chip">Express</span>
+            <span class="chip">MongoDB</span><span class="chip">MySQL</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>AI / ML</h4>
+          <div class="chips">
+            <span class="chip">LLMs</span><span class="chip">RAG</span>
+            <span class="chip">Agent memory</span><span class="chip">Ollama</span>
+            <span class="chip">scikit-learn</span><span class="chip">Plotly</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>Tooling</h4>
+          <div class="chips">
+            <span class="chip">Git</span><span class="chip">GitHub Actions</span>
+            <span class="chip">Docker</span><span class="chip">Vercel</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <h3 class="section__title reveal"><span>03.</span> Things I've built</h3>
+      <div class="projects">
+        <article class="project reveal">
+          <div class="project__top">
+            <span class="project__icon">🔎</span>
+            <div class="project__links">
+              <a href="https://github.com/harshvardhan178251/dsa-interview-cracker" target="_blank" rel="noopener" aria-label="Source">↗</a>
+            </div>
+          </div>
+          <h4>DSA Interview Cracker</h4>
+          <p>322 Java DSA problems across 24 topics — each with a step-by-step dry run, complexity analysis and interview notes, running in the browser.</p>
+          <div class="project__stack"><span>Java</span><span>JavaScript</span></div>
+          <a class="project__demo" href="https://harshvardhan178251.github.io/dsa-interview-cracker/" target="_blank" rel="noopener">Live demo ↗</a>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__top">
+            <span class="project__icon">🤖</span>
+            <div class="project__links">
+              <a href="https://github.com/harshvardhan178251/incident-response-agent" target="_blank" rel="noopener" aria-label="Source">↗</a>
+            </div>
+          </div>
+          <h4>Incident Response Agent</h4>
+          <p>AI agent that recalls past incidents, root causes and runbooks from long-term memory — then proves the memory changed its answer. Keyless LLM chain.</p>
+          <div class="project__stack"><span>Python</span><span>FastAPI</span><span>React</span></div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__top">
+            <span class="project__icon">💼</span>
+            <div class="project__links">
+              <a href="https://github.com/harshvardhan178251/job-board" target="_blank" rel="noopener" aria-label="Source">↗</a>
+            </div>
+          </div>
+          <h4>TalentFlow Job Board</h4>
+          <p>Enterprise-grade MERN job board with a decoupled architecture, GitHub Actions CI/CD and real-time sync across the recruitment lifecycle.</p>
+          <div class="project__stack"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
+          <a class="project__demo" href="https://job-board-rogers6.vercel.app" target="_blank" rel="noopener">Live demo ↗</a>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__top">
+            <span class="project__icon">☢️</span>
+            <div class="project__links">
+              <a href="https://github.com/harshvardhan178251/nuclear-dashboard" target="_blank" rel="noopener" aria-label="Source">↗</a>
+            </div>
+          </div>
+          <h4>Nuclear PdM Dashboard</h4>
+          <p>Predictive maintenance dashboard using an LSTM model on the NASA turbofan dataset to forecast Remaining Useful Life of critical assets.</p>
+          <div class="project__stack"><span>Python</span><span>Plotly Dash</span><span>ML</span></div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__top">
+            <span class="project__icon">🏦</span>
+            <div class="project__links">
+              <a href="https://github.com/harshvardhan178251/banking-system" target="_blank" rel="noopener" aria-label="Source">↗</a>
+            </div>
+          </div>
+          <h4>Banking System</h4>
+          <p>Full-stack banking management system — accounts, deposits, withdrawals and balance tracking over a clean, validated REST API.</p>
+          <div class="project__stack"><span>Spring Boot</span><span>React</span><span>MySQL</span></div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__top">
+            <span class="project__icon">🌳</span>
+            <div class="project__links">
+              <a href="https://github.com/harshvardhan178251/avl-tree-visualizer" target="_blank" rel="noopener" aria-label="Source">↗</a>
+            </div>
+          </div>
+          <h4>AVL Tree Visualizer</h4>
+          <p>Interactive self-balancing BST with rotations, live insert/delete/search and step-by-step animation of every rebalance.</p>
+          <div class="project__stack"><span>JavaScript</span><span>Data structures</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="section" id="stats">
+      <h3 class="section__title reveal"><span>04.</span> GitHub activity</h3>
+      <div class="stats reveal">
+        <img src="https://github-readme-stats.vercel.app/api?username=harshvardhan178251&show_icons=true&hide_border=true&bg_color=0d1117&title_color=a78bfa&icon_color=a78bfa&text_color=c9d1d9" alt="GitHub stats" loading="lazy" />
+        <img src="https://streak-stats.demolab.com?user=harshvardhan178251&hide_border=true&background=0d1117&ring=a78bfa&fire=a78bfa&currStreakNum=a78bfa" alt="GitHub streak" loading="lazy" />
+        <img class="stats__wide" src="https://github-readme-activity-graph.vercel.app/graph?username=harshvardhan178251&bg_color=0d1117&color=a78bfa&line=a78bfa&point=a78bfa&area=true&hide_border=true" alt="Activity graph" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section--contact" id="contact">
+      <h3 class="section__title reveal"><span>05.</span> Get in touch</h3>
+      <div class="contact reveal">
+        <p>
+          I'm open to SDE internships, new-grad roles and interesting
+          open-source collaboration. The fastest way to reach me is email.
+        </p>
+        <div class="contact__links">
+          <a class="btn btn--primary" href="mailto:reddy.harshavardhan1010@gmail.com">Say hello</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/reddy-harshvardhan-a02b92325/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn--ghost" href="https://github.com/harshvardhan178251" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Designed &amp; built by Harsh Vardhan · <span id="year"></span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
