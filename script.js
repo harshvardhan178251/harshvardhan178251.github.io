@@ -98,6 +98,132 @@
     revealEls.forEach((el) => io.observe(el));
   }
 
+  /* ---------- scroll progress ---------- */
+  const progressBar = document.getElementById("progress-bar");
+  if (progressBar) {
+    const updateProgress = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      progressBar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+    };
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+  }
+
+  /* ---------- custom cursor ---------- */
+  const cursor = document.getElementById("cursor");
+  const ring = document.getElementById("cursor-ring");
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  if (cursor && ring && finePointer && !reduceMotion) {
+    let rx = 0, ry = 0, tx = 0, ty = 0;
+
+    window.addEventListener("pointermove", (e) => {
+      tx = e.clientX;
+      ty = e.clientY;
+      cursor.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%)`;
+      cursor.classList.add("is-on");
+      ring.classList.add("is-on");
+    }, { passive: true });
+
+    // The ring lags behind the dot — cheap easing, no library.
+    const follow = () => {
+      rx += (tx - rx) * 0.18;
+      ry += (ty - ry) * 0.18;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+      requestAnimationFrame(follow);
+    };
+    requestAnimationFrame(follow);
+
+    document.addEventListener("mouseleave", () => {
+      cursor.classList.remove("is-on");
+      ring.classList.remove("is-on");
+    });
+
+    const hoverables = "a, button, .chip, .counter, [data-tilt]";
+    document.addEventListener("pointerover", (e) => {
+      if (e.target.closest(hoverables)) ring.classList.add("is-hover");
+    });
+    document.addEventListener("pointerout", (e) => {
+      if (e.target.closest(hoverables)) ring.classList.remove("is-hover");
+    });
+  }
+
+  /* ---------- animated counters ---------- */
+  const counterBox = document.getElementById("counters");
+  if (counterBox) {
+    const nums = counterBox.querySelectorAll("[data-count]");
+
+    const animate = (el) => {
+      const target = parseInt(el.dataset.count, 10) || 0;
+      if (reduceMotion) { el.textContent = String(target); return; }
+
+      const duration = 1400;
+      const start = performance.now();
+      const step = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        // ease-out cubic
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = String(Math.round(target * eased));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      nums.forEach(animate);
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            nums.forEach(animate);
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.4 });
+      io.observe(counterBox);
+    }
+  }
+
+  /* ---------- active section dots ---------- */
+  const dotLinks = Array.from(document.querySelectorAll(".dots a"));
+  if (dotLinks.length && "IntersectionObserver" in window) {
+    const sections = dotLinks
+      .map((a) => document.getElementById(a.dataset.dot))
+      .filter(Boolean);
+
+    const setActive = (id) => {
+      dotLinks.forEach((a) =>
+        a.classList.toggle("is-active", a.dataset.dot === id)
+      );
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+
+    sections.forEach((s) => io.observe(s));
+  }
+
+  /* ---------- 3D tilt on cards ---------- */
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll("[data-tilt]").forEach((card) => {
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform =
+          `perspective(900px) rotateY(${px * 7}deg) rotateX(${-py * 7}deg) translateY(-6px)`;
+      });
+      card.addEventListener("pointerleave", () => {
+        card.style.transform = "";
+      });
+    });
+  }
+
   /* ---------- particle grid ---------- */
   const canvas = document.getElementById("grid-canvas");
   if (canvas && !reduceMotion) {
