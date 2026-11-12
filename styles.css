@@ -824,6 +824,174 @@ body {
 
 .project__body { padding: 22px 24px 24px; position: relative; z-index: 1; }
 
+/* ---------- profile snapshot card ---------- */
+.snapshot {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 18px 20px 16px;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.snapshot:hover { border-color: rgba(124, 58, 237, 0.5); transform: translateY(-3px); }
+
+.snapshot--wide { grid-column: 1 / -1; }
+
+.snapshot__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.snapshot__avatar {
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.18);
+}
+
+.snapshot__head b {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.snapshot__head span {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.snapshot__badge {
+  margin-left: auto;
+  font-size: 0.66rem !important;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  color: var(--accent-2) !important;
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  background: rgba(34, 211, 238, 0.08);
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.snapshot__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 12px;
+  margin: 16px 0 14px;
+}
+
+.snapshot__grid dt {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.snapshot__grid dd {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  background: linear-gradient(120deg, #c4b5fd, #67e8f9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.snapshot__foot {
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.snapshot__graph {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent;
+}
+
+/* ---------- streak card ---------- */
+.streak__top {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.streak__flame { font-size: 1.7rem; line-height: 1; }
+
+.streak__nums b {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.streak__nums b i {
+  font-style: normal;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-right: 3px;
+  background: linear-gradient(120deg, #fbbf24, #f97316);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.streak__nums span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.streak__badge {
+  color: #39d353 !important;
+  border-color: rgba(57, 211, 83, 0.45) !important;
+  background: rgba(57, 211, 83, 0.08) !important;
+}
+
+.streak__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 54px;
+  margin: 18px 0 4px;
+  padding-bottom: 2px;
+}
+
+.streak__bars .bar {
+  flex: 1;
+  max-width: 20px;
+  min-height: 4px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #39d353, #26a641);
+  box-shadow: 0 0 8px rgba(57, 211, 83, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.streak__bars .bar:hover { transform: scaleY(1.08); }
+
+.streak__bars .bar--0 {
+  background: #161b22;
+  box-shadow: none;
+}
+
 /* ---------- reveal on scroll ---------- */
 .reveal {
   opacity: 0;
@@ -886,8 +1054,12 @@ body {
   .featured__meta { gap: 14px; }
   .project__shot img { height: 150px; }
   .hero__pills { margin-top: 32px; }
+  .snapshot__grid { grid-template-columns: repeat(2, 1fr); }
+  .snapshot__badge { display: none; }
 }
 
 @media (max-width: 420px) {
   .counters { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .snapshot__grid { grid-template-columns: repeat(2, 1fr); gap: 14px 10px; }
+  .snapshot__grid dd { font-size: 1.2rem; }
 }
